@@ -1,0 +1,30 @@
+# Backend - Maven and IDEs
+backend/target/
+backend/.mvn/wrapper/maven-wrapper.jar
+backend/mvnw
+backend/mvnw.cmd
+backend/.settings/
+backend/.classpath
+backend/.project
+backend/*.iml
+backend/*.ipr
+backend/*.iws
+backend/.idea/
+backend/out/
+
+# Frontend - Node and Vite
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/*.local
+frontend/.vscode/
+
+# Root and general
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+.vite/
+target/
+node_modules/

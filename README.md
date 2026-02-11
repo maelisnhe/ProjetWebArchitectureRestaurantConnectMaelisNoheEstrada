@@ -66,39 +66,35 @@
 
 ```
 restaurantconnect/
-├── src/main/java/com/restaurantconnect/
-│   ├── config/               # Configuration (CORS, DataInitializer)
-│   ├── controller/           # REST Controllers
-│   ├── dto/                  # Data Transfer Objects
-│   ├── exception/            # Gestion erreurs personnalisées
-│   ├── model/                # Entités JPA
-│   │   ├── MenuItem.java     # Plat
-│   │   ├── Rating.java       # Notation (@ManyToOne)
-│   │   ├── Reservation.java  # Réservation
-│   │   └── User.java         # Utilisateur
-│   ├── repository/           # Spring Data JPA
-│   └── service/              # Logique métier
-│       ├── ReservationService.java  # Calcul capacité
-│       └── RatingService.java       # Gestion notations
+├── backend/                   # Application Spring Boot
+│   ├── src/main/java/com/restaurantconnect/
+│   │   ├── config/            # Configuration (CORS, DataInitializer)
+│   │   ├── controller/        # REST Controllers
+│   │   ├── dto/               # Data Transfer Objects
+│   │   ├── exception/         # Gestion erreurs personnalisées
+│   │   ├── model/             # Entités JPA (MenuItem, Rating, Reservation, User)
+│   │   ├── repository/        # Spring Data JPA
+│   │   └── service/           # Logique métier (ReservationService, RatingService)
+│   ├── pom.xml                # Dépendances Maven
+│   ├── mvnw                   # Wrapper Maven
+│   └── start-backend.bat      # Script de lancement
 │
-├── restaurantconnect-frontend/
+├── frontend/                  # Application React (Vite)
 │   ├── src/
-│   │   ├── components/       # Composants réutilisables
-│   │   │   └── StarRating.tsx
-│   │   ├── pages/            # Pages principales
-│   │   │   ├── MenuPage.tsx
-│   │   │   ├── ReservationPage.tsx
-│   │   │   └── ReviewsPage.tsx
-│   │   ├── services/         # API Axios
-│   │   │   ├── api.ts
-│   │   │   └── ratingsAPI.ts
-│   │   └── styles/           # CSS global
-│   └── public/               # Assets statiques
+│   │   ├── components/        # Composants réutilisables (StarRating.tsx, etc.)
+│   │   ├── pages/             # Pages principales (Menu, Reservation, Reviews)
+│   │   ├── services/          # API Axios (api.ts, ratingsAPI.ts)
+│   │   └── styles/            # CSS global
+│   ├── public/                # Assets statiques
+│   └── package.json           # Dépendances Node.js
 │
-├── .gitignore
-├── README.md
-├── RAPPORT_TECHNIQUE.md      # Documentation détaillée
-└── PASSATION_TECHNIQUE.md    # Guide de reprise
+├── doc/                       # Documentation académique
+│   ├── RAPPORT_TECHNIQUE.md   # Documentation détaillée
+│  reprise
+│   └── screenshots/           # Preuves de fonctionnement
+│
+├── .gitignore                 # Configuration Git
+└── README.md                  # Vue d'ensemble
 ```
 
 ---
@@ -120,7 +116,7 @@ CREATE USER restaurant_user WITH PASSWORD 'votre_password';
 GRANT ALL PRIVILEGES ON DATABASE restaurantconnect TO restaurant_user;
 ```
 
-2. Configurer `src/main/resources/application.properties` :
+2. Configurer `backend/src/main/resources/application.properties` :
 ```properties
 spring.application.name=RestaurantConnect
 
@@ -145,15 +141,16 @@ cd restaurantconnect
 ```
 
 ### 2. Lancer le Backend (Spring Boot)
-Depuis la racine du projet :
 
 **Windows (PowerShell)** :
 ```powershell
+cd backend
 .\start-backend.ps1
 ```
 
 **Ou manuellement** :
 ```powershell
+cd backend
 $env:JAVA_HOME='C:\Users\maeli\jdk-17.0.16'
 $env:Path="$env:JAVA_HOME\bin;$env:Path"
 .\mvnw.cmd spring-boot:run
@@ -161,17 +158,17 @@ $env:Path="$env:JAVA_HOME\bin;$env:Path"
 
 **Linux/Mac** :
 ```bash
+cd backend
 ./mvnw spring-boot:run
 ```
 
 Le backend démarre sur **http://localhost:8080**
 
 ### 3. Lancer le Frontend (Vite/React)
-Depuis le dossier `restaurantconnect-frontend` :
 
 **Windows** :
 ```powershell
-cd restaurantconnect-frontend
+cd frontend
 $env:Path += ";C:\Program Files\nodejs"
 npm install  # Première fois uniquement
 npm run dev
@@ -179,20 +176,12 @@ npm run dev
 
 **Linux/Mac** :
 ```bash
-cd restaurantconnect-frontend
+cd frontend
 npm install  # Première fois uniquement
 npm run dev
 ```
 
 Le frontend démarre sur **http://localhost:5173**
-
-### 4. Accès à l'application
-- **Frontend** : http://localhost:5173
-- **API Backend** : http://localhost:8080/api
-- **Endpoints principaux** :
-  - `/api/menu-items` - Liste des plats
-  - `/api/reservations` - Réservations
-  - `/api/ratings` - Notations
 
 ---
 
@@ -200,6 +189,7 @@ Le frontend démarre sur **http://localhost:5173**
 
 Pour une compréhension approfondie de l'architecture, des modèles, des services et des choix techniques, consultez :
 
+<<<<<<< HEAD
 - **[RAPPORT_TECHNIQUE.md](./RAPPORT_TECHNIQUE.md)** - Explication détaillée de chaque composant
 
 ### Problèmes Courants
@@ -212,6 +202,9 @@ Stop-Process -Id (Get-NetTCPConnection -LocalPort 8080).OwningProcess -Force
 #### Erreur de connexion (ERR_CONNECTION_REFUSED)
 Utiliser **127.0.0.1** au lieu de **localhost** dans les fichiers `api.ts` et `ratingsAPI.ts` pour éviter les problèmes IPv6 sur Windows.
 
+=======
+- **[RAPPORT_TECHNIQUE.md](./doc/RAPPORT_TECHNIQUE.md)** - Explication détaillée de chaque composant
+>>>>>>> b14de36 (Structure propre et demandée pour le projet)
 ---
 
 ## 🎯 Chiffres Clés
