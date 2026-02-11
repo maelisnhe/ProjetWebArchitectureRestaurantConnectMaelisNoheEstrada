@@ -201,7 +201,6 @@ Le frontend démarre sur **http://localhost:5173**
 Pour une compréhension approfondie de l'architecture, des modèles, des services et des choix techniques, consultez :
 
 - **[RAPPORT_TECHNIQUE.md](./RAPPORT_TECHNIQUE.md)** - Explication détaillée de chaque composant
-- **[PASSATION_TECHNIQUE.md](./PASSATION_TECHNIQUE.md)** - Guide de reprise et résolution de problèmes
 
 ### Problèmes Courants
 
