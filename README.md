@@ -228,6 +228,7 @@ Utiliser **127.0.0.1** au lieu de **localhost** dans les fichiers `api.ts` et `r
 ## 👥 Contributeurs
 
 - **Maëlys** - Développement Full Stack
+- **Reda** - UI-UX Design, Dev Frontend
 - **Assistant IA** - Accompagnement technique et architecture
 
 ---
