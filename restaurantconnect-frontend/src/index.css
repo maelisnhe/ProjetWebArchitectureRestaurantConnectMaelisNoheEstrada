@@ -1,0 +1,475 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Montserrat:wght@200;300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== RESET CSS TOTAL ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --cream: #FDFCFB;
+  --charcoal: #1A1A1A;
+  --champagne: #d4af37;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--cream);
+  color: var(--charcoal);
+  font-weight: 300;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ===== RESET LIENS (CRITICAL) ===== */
+a {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+a:visited {
+  color: inherit !important;
+}
+
+a:hover {
+  color: inherit !important;
+}
+
+/* ===== TYPOGRAPHIE ===== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== NAVIGATION FIXED ===== */
+.nav-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 80px;
+  z-index: 9999;
+  background: rgba(253, 252, 251, 0.98);
+  backdrop-filter: blur(8px);
+  border-bottom: 0.5px solid rgba(26, 26, 26, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 10px auto;
+  padding: 2 4%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #000000;
+}
+
+.nav-links {
+  display: flex;
+  gap: 3rem;
+}
+
+.nav-link {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  position: relative;
+  padding: 0.5rem 0;
+  color: #000000;
+  transition: color 0.15s ease;
+  text-decoration: none;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--champagne);
+}
+
+/* ===== GIANT BACKGROUND TEXT ===== */
+.giant-text-bg {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(6rem, 15vw, 12rem);
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.02);
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+/* ===== HERO SECTION 50/50 ===== */
+.hero-container {
+  display: flex;
+  min-height: 100vh;
+  padding-top: 5rem;
+  will-change: transform;
+}
+
+.hero-left {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 8%;
+}
+
+.hero-right {
+  width: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
+  filter: brightness(1.05) contrast(1.05);
+  will-change: transform;
+}
+
+/* Text overlay gradient for images */
+.image-text-overlay {
+  position: relative;
+}
+
+.image-text-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent 40%);
+  z-index: 1;
+}
+
+.image-text-overlay .overlay-text {
+  position: absolute;
+  top: 3rem;
+  left: 3rem;
+  color: white;
+  z-index: 2;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column;
+  }
+
+  .hero-left,
+  .hero-right {
+    width: 100%;
+  }
+
+  .nav-container {
+    padding: 1.5rem 5%;
+  }
+
+  .nav-links {
+    gap: 2rem;
+  }
+}
+
+/* ===== BUTTONS WITH HOVER ===== */
+.btn-luxury {
+  display: inline-block;
+  padding: 1.2rem 3rem;
+  border: 1px solid var(--champagne);
+  background: transparent;
+  color: var(--charcoal);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  position: relative;
+}
+
+.btn-luxury:hover {
+  background: rgba(212, 175, 55, 0.08);
+  color: var(--champagne);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
+  border-color: var(--champagne);
+}
+
+.btn-luxury:active {
+  transform: translateY(-3px);
+  transition: transform 0.1s ease;
+}
+
+/* ===== MENU ITEMS ===== */
+.menu-container {
+  padding: 8rem 10%;
+  position: relative;
+  z-index: 10;
+}
+
+.menu-item {
+  margin-bottom: 4rem;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+  padding-bottom: 3rem;
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.menu-item-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item-content {
+  flex: 1;
+}
+
+.menu-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1rem;
+  gap: 2rem;
+}
+
+.menu-item-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  flex-shrink: 0;
+}
+
+.menu-item-dots {
+  flex-grow: 1;
+  border-bottom: 1px dotted rgba(26, 26, 26, 0.25);
+  margin-bottom: 0.5rem;
+}
+
+.menu-item-price {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--champagne);
+  flex-shrink: 0;
+}
+
+.menu-item-description {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(26, 26, 26, 0.7);
+  line-height: 1.8;
+  font-style: italic;
+}
+
+/* ===== FORM INPUTS ===== */
+.input-luxury {
+  width: 100%;
+  padding: 1.5rem 0;
+  border: none;
+  border-bottom: 0.5px solid rgba(26, 26, 26, 0.2);
+  background: transparent;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--charcoal);
+  transition: border-color 0.3s ease, padding-left 0.3s ease;
+}
+
+.input-luxury:focus {
+  outline: none;
+  border-bottom-color: var(--champagne);
+  padding-left: 1rem;
+}
+
+.input-label {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.6);
+  margin-bottom: 1rem;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: var(--charcoal);
+  color: rgba(253, 252, 251, 0.8);
+  padding: 6rem 10% 3rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4rem;
+  margin-bottom: 4rem;
+  align-items: start;
+}
+
+.footer-section h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--champagne);
+  margin-bottom: 1.5rem;
+  line-height: 1.25rem;
+}
+
+.footer-section p,
+.footer-section a {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(253, 252, 251, 0.7);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.footer-section a:hover {
+  color: var(--champagne);
+}
+
+.footer-logo {
+  color: var(--champagne);
+  font-size: 2rem;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(253, 252, 251, 0.1);
+  font-size: 0.8rem;
+  color: rgba(253, 252, 251, 0.5);
+}
+
+/* ===== SPACING ===== */
+.section-spacing {
+  padding: 8rem 10%;
+}
+
+.accent-line {
+  width: 80px;
+  height: 1px;
+  background: var(--champagne);
+  margin: 2rem 0;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--champagne);
+  border-radius: 3px;
+}
+
+/* ===== REACT DATEPICKER LUXURY STYLES ===== */
+.luxury-calendar {
+  background: rgba(253, 252, 251, 0.05) !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  border-radius: 8px !important;
+  font-family: 'Montserrat', sans-serif !important;
+  width: 100% !important;
+}
+
+.react-datepicker {
+  background: rgba(26, 26, 26, 0.95) !important;
+  border: 1px solid #d4af37 !important;
+}
+
+.react-datepicker__header {
+  background: linear-gradient(135deg, #2C2416 0%, #1A1A1A 100%) !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important;
+}
+
+.react-datepicker__current-month,
+.react-datepicker__day-name {
+  color: #d4af37 !important;
+  font-weight: 500 !important;
+}
+
+.react-datepicker__day {
+  color: #FDFCFB !important;
+  transition: all 0.2s ease !important;
+}
+
+.react-datepicker__day:hover {
+  background: rgba(212, 175, 55, 0.2) !important;
+  color: #d4af37 !important;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background: linear-gradient(135deg, #d4af37 0%, #f4d077 100%) !important;
+  color: #1A1A1A !important;
+  font-weight: 600 !important;
+}
+
+.react-datepicker__day--disabled {
+  color: rgba(253, 252, 251, 0.3) !important;
+  cursor: not-allowed !important;
+}
+
+.react-datepicker__navigation-icon::before {
+  border-color: #d4af37 !important;
+}
