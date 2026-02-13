@@ -1,0 +1,90 @@
+application {
+  config {
+    baseName RestaurantConnect
+    applicationType monolith
+    packageName com.restaurantconnect
+    authenticationType jwt
+    databaseType sql
+    prodDatabaseType postgresql
+    devDatabaseType postgresql
+    buildTool maven
+    clientFramework react
+    clientTheme none
+  }
+}
+
+entity User {
+  firstname String required
+  lastname String required
+  email String required unique
+  phone String
+  role UserRole required
+  createdAt Instant
+}
+
+enum UserRole {
+  CLIENT,
+  ADMIN
+}
+
+entity RestaurantTable {
+  number Integer required
+  capacity Integer required
+  available Boolean required
+}
+
+entity Reservation {
+  reservationDate LocalDate required
+  reservationTime LocalTime required
+  numberOfPeople Integer required
+  status ReservationStatus required
+}
+
+enum ReservationStatus {
+  PENDING,
+  CONFIRMED,
+  CANCELLED
+}
+
+entity Category {
+  name String required unique
+}
+
+entity MenuItem {
+  name String required
+  description String
+  price BigDecimal required
+  available Boolean required
+  imageUrl String
+}
+
+entity Order {
+  orderDate Instant required
+  status OrderStatus required
+  totalPrice BigDecimal required
+}
+
+enum OrderStatus {
+  CREATED,
+  PAID,
+  READY,
+  CANCELLED
+}
+
+entity OrderItem {
+  quantity Integer required
+  price BigDecimal required
+}
+
+relationship ManyToOne {
+  Reservation{user} to User
+  Reservation{table} to RestaurantTable
+  MenuItem{category} to Category
+  Order{user} to User
+  OrderItem{order} to Order
+  OrderItem{menuItem} to MenuItem
+}
+
+paginate MenuItem, Reservation, Order with pagination
+service all with serviceClass
+dto all with mapstruct

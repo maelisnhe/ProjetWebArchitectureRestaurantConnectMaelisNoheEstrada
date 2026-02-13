@@ -89,9 +89,11 @@ restaurantconnect/
 │   └── package.json           # Dépendances Node.js
 │
 ├── doc/                       # Documentation académique
-│   ├── RAPPORT_TECHNIQUE.md   # Documentation détaillée
-│  reprise
+│   ├── RAPPORT_TECHNIQUE.md   # Documentation détaillée reprise
+|   ├── page1.md   # Documentation détaillée
+│   |── domaindriven           # Documentation Swagger
 │   └── screenshots/           # Preuves de fonctionnement
+|   └── prompts.md             # Prompts utilisés pour le développement
 │
 ├── .gitignore                 # Configuration Git
 └── README.md                  # Vue d'ensemble
@@ -189,22 +191,20 @@ Le frontend démarre sur **http://localhost:5173**
 
 Pour une compréhension approfondie de l'architecture, des modèles, des services et des choix techniques, consultez :
 
-<<<<<<< HEAD
-- **[RAPPORT_TECHNIQUE.md](./RAPPORT_TECHNIQUE.md)** - Explication détaillée de chaque composant
-
-### Problèmes Courants
-
-#### Port 8080 déjà utilisé
-```powershell
-Stop-Process -Id (Get-NetTCPConnection -LocalPort 8080).OwningProcess -Force
-```
-
-#### Erreur de connexion (ERR_CONNECTION_REFUSED)
-Utiliser **127.0.0.1** au lieu de **localhost** dans les fichiers `api.ts` et `ratingsAPI.ts` pour éviter les problèmes IPv6 sur Windows.
-
-=======
 - **[RAPPORT_TECHNIQUE.md](./doc/RAPPORT_TECHNIQUE.md)** - Explication détaillée de chaque composant
->>>>>>> b14de36 (Structure propre et demandée pour le projet)
+- **[domaindriven](./doc/domaindriven)** - Documentation Swagger
+- **[page1.md](./doc/page1.md)** - Documentation Fonctionnelle & Ubiquitous Language
+- **[screenshots](./doc/screenshots)** - Preuves de fonctionnement
+- **[prompts.md](./doc/prompts.md)** - Prompts utilisés pour le développement
+
+---
+
+## 📖 Documentation Fonctionnelle & Lexique
+
+Pour comprendre les besoins métier et le langage ubiquitaire (Ubiquitous Language) du projet :
+
+- **[page1.md](./doc/page1.md)** - Description fonctionnelle et lexique technique (DDD)
+
 ---
 
 ## 🎯 Chiffres Clés
